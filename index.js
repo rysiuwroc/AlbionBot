@@ -6,20 +6,20 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
 
-const commandFolders = fs.readdirSync("./commands");
+const commandFolders = fs.readdirSync("./libs/commands");
 
 for (const folder of commandFolders) {
-	const commandFiles = fs.readdirSync(`./commands/${folder}`).filter((file) => file.endsWith(".js"));
+	const commandFiles = fs.readdirSync(`./libs/commands/${folder}`).filter((file) => file.endsWith(".js"));
 	for (const file of commandFiles) {
-		const command = require(`./commands/${folder}/${file}`);
+		const command = require(`./libs/commands/${folder}/${file}`);
 		client.commands.set(command.name, command);
 	}
 }
 
-const eventFiles = fs.readdirSync("./events").filter((file) => file.endsWith(".js"));
+const eventFiles = fs.readdirSync("./libs/events").filter((file) => file.endsWith(".js"));
 
 for (const file of eventFiles) {
-	const event = require(`./events/${file}`);
+	const event = require(`./libs/events/${file}`);
 	if (event.once) {
 		client.once(event.name, (...args) => event.execute(client, ...args));
 	} else {
