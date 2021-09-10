@@ -1,4 +1,4 @@
-const { prefix } = require("../../config.json");
+const { prefix } = require("../../../configs/discord-config.json");
 
 module.exports = {
 	name: "echo",

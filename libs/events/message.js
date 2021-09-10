@@ -1,11 +1,10 @@
-const { prefix } = require("../config.json");
+const { prefix } = require("../../configs/discord-config.json");
 const Discord = require("discord.js");
 
 module.exports = {
 	name: "message",
 	execute(client, message) {
-		//log+look for prefix
-		console.log(`${message.author.tag} in #${message.channel.name} sent: ${message.content}`);
+		//look for prefix		
 		if (!message.content.startsWith(prefix) || message.author.bot) return;
 
 		//check args and get command/alias
@@ -17,6 +16,7 @@ module.exports = {
 		if (!client.commands.has(command.name)) return;
 
 		try {
+			console.log(`${message.author.tag} in #${message.channel.name} sent: ${message.content}`);
 			//validate args count
 			if (command.args && !args.length) {
 				let reply = `You didn't provide any arguments, ${message.author}!`;
@@ -34,7 +34,7 @@ module.exports = {
 
 				const now = Date.now();
 				const timestamps = client.cooldowns.get(command.name);
-				const cooldownAmount = (command.cooldown || 3) * 1000;
+				const cooldownAmount = (command.cooldown || 2) * 1000;
 
 				if (timestamps.has(message.author.id)) {
 					const expirationTime = timestamps.get(message.author.id) + cooldownAmount;

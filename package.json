@@ -1,7 +1,7 @@
 {
-  "name": "fistdiscobot",
+  "name": "albionbot",
   "version": "1.0.0",
-  "description": "first playground/testing bot for Wydo",
+  "description": "albionbot",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,9 +12,11 @@
     "@discordjs/builders": "^0.6.0",
     "@discordjs/rest": "^0.1.0-canary.0",
     "axios": "^0.21.4",
+    "bluebird": "^3.7.2",
     "discord-api-types": "^0.22.0",
     "discord.js": "^12.5.3",
-    "dotenv": "^10.0.0"
+    "dotenv": "^10.0.0",
+    "mysql2": "^2.3.0"
   },
   "devDependencies": {
     "eslint": "^7.32.0"
