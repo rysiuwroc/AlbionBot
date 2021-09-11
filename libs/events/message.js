@@ -13,7 +13,7 @@ module.exports = {
 		const command = client.commands.get(commandName) || client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(commandName));
 
 		//check if the command exists
-		if (!client.commands.has(command.name)) return;
+		if (!command) return;
 
 		try {
 			console.log(`${message.author.tag} in #${message.channel.name} sent: ${message.content}`);

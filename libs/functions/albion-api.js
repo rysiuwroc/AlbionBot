@@ -1,5 +1,8 @@
 const { api } = require("../../configs/albion-api-config.json");
-const axios = require("axios")
+const axios = require("axios");
+const axiosRetry = require("axios-retry");
+
+axiosRetry(axios,{retries: 3,retryDelay: 5000});
 
 module.exports = {
     async execute(endpoint,id) {

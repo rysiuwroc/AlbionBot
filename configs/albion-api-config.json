@@ -1,8 +1,8 @@
 {
     "api":"https://gameinfo.albiononline.com/api/gameinfo/",
-    "findPlayer":"search?q=",
-    "getPlayer":"players/",
-    "getGuild":"guilds/",
-    "getAlliance":"alliances/",
+    "findPlayerByName":"search?q=",
+    "getPlayerById":"players/",
+    "getGuildById":"guilds/",
+    "getAllianceById":"alliances/",
     "getGuildMembers":["guilds/","/members"]
 }
