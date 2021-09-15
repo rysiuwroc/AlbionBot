@@ -28,15 +28,15 @@ module.exports = function(sequelize, DataTypes) {
     },
     adminChannelId: {
       type: DataTypes.STRING(25),
-      allowNull: false
+      allowNull: true
     },
     defaultRoleId: {
       type: DataTypes.STRING(25),
-      allowNull: false
+      allowNull: true
     },
     allowUsersStatusId: {
       type: DataTypes.SMALLINT,
-      allowNull: false,
+      allowNull: true,
       comment: "allow only guild, allow alliance, allow everyone",
       references: {
         model: 'settings_allowusers_statuses',
@@ -45,7 +45,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     tagUseStatusId: {
       type: DataTypes.SMALLINT,
-      allowNull: false,
+      allowNull: true,
       comment: "make tag, dont make tag, make tag only for guild, make tag only for alliance",
       references: {
         model: 'settings_taguse_statuses',
@@ -54,7 +54,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     tagTypeStatusId: {
       type: DataTypes.SMALLINT,
-      allowNull: false,
+      allowNull: true,
       comment: "guild abrev, alliance, abrev",
       references: {
         model: 'settings_tagtype_statuses',
