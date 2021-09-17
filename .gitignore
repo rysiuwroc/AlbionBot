@@ -4,3 +4,4 @@ node_modules
 .eslintrc.json
 tests
 configs
+init-models.js
