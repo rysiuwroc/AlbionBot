@@ -8,7 +8,7 @@ module.exports = {
     usage: "<1,2>",
     cooldown: 0,
     guildOnly: true,
-    aliases: ["stt"],
+    aliases: ["sam"],
     adminChannel: true,
     async execute(message, args) {
         if (args[0] == 1 || args[0] == 2) {

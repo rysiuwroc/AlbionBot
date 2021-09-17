@@ -8,9 +8,10 @@ module.exports = {
                 albionGuildId:guild.albionGuildId,
                 albionAllianceId:guild.albionAllianceId,
                 adminChannelId:guild.adminChannelId,
+                registerChannelId:guild.registerChannelId,
                 defaultRoleId:guild.defaultRoleId,
                 allowUsersStatusId:guild.allowUsersStatusId,
-                tagUseStatusId:guild.tagUseStatusId,
+                aliasModeStatusId:guild.aliasModeStatusId,
                 tagModeStatusId:guild.tagModeStatusId,
                 joinedAt: guild.joinedAt,               
             },{where:{id:guild.id}})

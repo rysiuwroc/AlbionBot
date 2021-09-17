@@ -23,11 +23,11 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
-    guildId: {
+    discoGuildId: {
       type: DataTypes.STRING(25),
       allowNull: false,
       references: {
-        model: 'albion_guilds',
+        model: 'disco_guilds',
         key: 'id'
       }
     },
@@ -63,10 +63,10 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
-        name: "FK_correlation_user_player_discoguild_guildId",
+        name: "FK_correlation_user_player_discoguild_disco_guilds",
         using: "BTREE",
         fields: [
-          { name: "guildId" },
+          { name: "discoGuildId" },
         ]
       },
     ]

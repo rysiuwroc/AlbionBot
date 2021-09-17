@@ -6,15 +6,23 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true
     },
-    albionName: {
+    name: {
       type: DataTypes.STRING(50),
       allowNull: false
     },
-    albionGuildId: {
+    guildId: {
       type: DataTypes.STRING(25),
       allowNull: true,
       references: {
         model: 'albion_guilds',
+        key: 'id'
+      }
+    },
+    allianceId: {
+      type: DataTypes.STRING(25),
+      allowNull: true,
+      references: {
+        model: 'albion_alliances',
         key: 'id'
       }
     },
@@ -44,7 +52,14 @@ module.exports = function(sequelize, DataTypes) {
         name: "FK_albion_players_albionGuildId",
         using: "BTREE",
         fields: [
-          { name: "albionGuildId" },
+          { name: "guildId" },
+        ]
+      },
+      {
+        name: "FK_albion_players_albion_alliances",
+        using: "BTREE",
+        fields: [
+          { name: "allianceId" },
         ]
       },
     ]
