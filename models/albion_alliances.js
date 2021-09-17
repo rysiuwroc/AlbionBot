@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('albion_alliance', {
+  return sequelize.define('albion_alliances', {
     id: {
       type: DataTypes.STRING(25),
       allowNull: false,
@@ -12,15 +12,23 @@ module.exports = function(sequelize, DataTypes) {
     },
     founderId: {
       type: DataTypes.STRING(25),
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'albion_founders',
+        key: 'id'
+      }
     },
     foundationDate: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    tag: {
+      type: DataTypes.STRING(50),
       allowNull: false
     }
   }, {
     sequelize,
-    tableName: 'albion_alliance',
+    tableName: 'albion_alliances',
     timestamps: false,
     indexes: [
       {
@@ -29,6 +37,13 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "id" },
+        ]
+      },
+      {
+        name: "FK_albion_alliances_albion_founders",
+        using: "BTREE",
+        fields: [
+          { name: "founderId" },
         ]
       },
     ]

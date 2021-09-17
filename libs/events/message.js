@@ -1,9 +1,10 @@
 const { prefix } = require("../../configs/discord-config.json");
 const Discord = require("discord.js");
+const dbGetByPk = require("../functions/db/db-get-by-pk");
 
 module.exports = {
 	name: "message",
-	execute(client, message) {
+	async execute(client, message) {
 		//look for prefix		
 		if (!message.content.startsWith(prefix) || message.author.bot) return;
 
@@ -14,6 +15,12 @@ module.exports = {
 
 		//check if the command exists
 		if (!command) return;
+
+		//check if message sent on admin channel
+		var discoGuild = await dbGetByPk.execute("disco_guilds", message.guild.id)
+		if (discoGuild.adminChannelId && message.channel.id != discoGuild.adminChannelId) {
+			return;
+		}
 
 		try {
 			console.log(`${message.author.tag} in #${message.channel.name} sent: ${message.content}`);

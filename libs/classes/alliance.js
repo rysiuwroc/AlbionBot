@@ -9,7 +9,7 @@ class Alliance{
         this.tag=alliance.AllianceTag;
         this.founderId=alliance.FounderId;
         this.founderName=alliance.FounderName;
-        this.founedDate=alliance.Founded;
+        this.foundedDate=alliance.Founded;
         this.playerNum=alliance.NumPlayers;
         this.guildList=[];
 

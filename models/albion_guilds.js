@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(25),
       allowNull: true,
       references: {
-        model: 'albion_alliance',
+        model: 'albion_alliances',
         key: 'id'
       }
     },
@@ -27,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     foundationDate: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATE,
       allowNull: false
     }
   }, {

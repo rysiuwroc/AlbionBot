@@ -22,11 +22,15 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(25),
       allowNull: true,
       references: {
-        model: 'albion_alliance',
+        model: 'albion_alliances',
         key: 'id'
       }
     },
     adminChannelId: {
+      type: DataTypes.STRING(25),
+      allowNull: true
+    },
+    registerChannelId: {
       type: DataTypes.STRING(25),
       allowNull: true
     },
@@ -39,27 +43,30 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true,
       comment: "allow only guild, allow alliance, allow everyone",
       references: {
-        model: 'settings_allowusers_statuses',
+        model: 'settings_usermode_statuses',
         key: 'id'
       }
     },
-    tagUseStatusId: {
-      type: DataTypes.SMALLINT,
-      allowNull: true,
-      comment: "make tag, dont make tag, make tag only for guild, make tag only for alliance",
-      references: {
-        model: 'settings_taguse_statuses',
-        key: 'id'
-      }
-    },
-    tagTypeStatusId: {
+    tagModeStatusId: {
       type: DataTypes.SMALLINT,
       allowNull: true,
       comment: "guild abrev, alliance, abrev",
       references: {
-        model: 'settings_tagtype_statuses',
+        model: 'settings_tagmode_statuses',
         key: 'id'
       }
+    },
+    aliasModeStatusId: {
+      type: DataTypes.SMALLINT,
+      allowNull: true,
+      references: {
+        model: 'settings_aliasmode_statuses',
+        key: 'id'
+      }
+    },
+    joinedAt: {
+      type: DataTypes.DATE,
+      allowNull: false
     }
   }, {
     sequelize,
@@ -89,24 +96,24 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
-        name: "FK_disco_guilds_tagTypeStatusId",
-        using: "BTREE",
-        fields: [
-          { name: "tagTypeStatusId" },
-        ]
-      },
-      {
-        name: "FK_disco_guilds_tagUseStatusId",
-        using: "BTREE",
-        fields: [
-          { name: "tagUseStatusId" },
-        ]
-      },
-      {
         name: "FK_disco_guilds_albionAllianceId",
         using: "BTREE",
         fields: [
           { name: "albionAllianceId" },
+        ]
+      },
+      {
+        name: "FK_disco_guilds_tagTypeStatusId",
+        using: "BTREE",
+        fields: [
+          { name: "tagModeStatusId" },
+        ]
+      },
+      {
+        name: "FK_disco_guilds_settings_aliasmode_statuses",
+        using: "BTREE",
+        fields: [
+          { name: "aliasModeStatusId" },
         ]
       },
     ]

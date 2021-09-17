@@ -1,6 +1,7 @@
 const fs = require("fs");
 const Discord = require("discord.js");
 const { prefix, token } = require("./configs/discord-config.json");
+const reloadGuilds = require("./libs/functions/discord/reload-guilds");
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -26,5 +27,8 @@ for (const file of eventFiles) {
 		client.on(event.name, (...args) => event.execute(client, ...args));
 	}
 }
-
-client.login(token);
+(async () => {
+	await client.login(token);
+	await reloadGuilds.execute(client);
+	console.log("Bot is ready to go!");
+})();

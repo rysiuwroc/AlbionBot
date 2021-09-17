@@ -1,16 +1,11 @@
-
-const db = require("../../models/index")
+const db = require("../../models/index");
+const albionApi = require("../functions/albion-api");
+const discoGuildCreate=require("../functions/db/disco-guild-create")
+const endpoint=require("../../configs/albion-api-config.json")
 
 module.exports={
     name:"guildCreate",
     async execute(client,guild){
-        //checking if the guild is in the db, if not then add
-        var result =await db["disco_guilds"].findAndCountAll({where:{id:guild.id}});
-        if(!result.count){
-            await db["disco_guilds"].create({
-                id:guild.id,
-                guildName: guild.name
-            })
+    await discoGuildCreate.execute(guild);
         }
-    },
-}
+    }

@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('settings_taguse_statuses', {
+  return sequelize.define('settings_aliasmode_statuses', {
     id: {
       autoIncrement: true,
       type: DataTypes.SMALLINT,
@@ -8,12 +8,12 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     description: {
-      type: DataTypes.STRING(300),
+      type: DataTypes.STRING(250),
       allowNull: false
     }
   }, {
     sequelize,
-    tableName: 'settings_taguse_statuses',
+    tableName: 'settings_aliasmode_statuses',
     timestamps: false,
     indexes: [
       {
