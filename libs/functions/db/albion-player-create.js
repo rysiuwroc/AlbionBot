@@ -4,7 +4,7 @@ module.exports = {
     async execute(player) {
         var result = await db["albion_players"].findAndCountAll({ where: { id: player.id } });
         if (!result.count) {
-            await db["albion_players"].create({
+            return await db["albion_players"].create({
                 id: player.id,
                 name: player.name,
                 guildId:player.guildId,
